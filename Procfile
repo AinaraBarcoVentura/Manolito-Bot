@@ -1,1 +1,1 @@
-web: python Manolito.py
+worker: python Manolito.py

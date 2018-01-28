@@ -7,7 +7,7 @@ def hello(bot, update):
 
 
 def start(bot, update):
-    update.message.reply_text('Hola, soy Manolito, tu bot favorito :)')
+    update.message.reply_text('¡Hola!, soy Manolito, tu bot favorito :)')
 
 
 def obtener_hora(bot, update):

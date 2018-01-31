@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CommandHandler
+from WebSearch import find
 import time
 
 def hello(bot, update):
@@ -29,12 +30,25 @@ def obtener_hora(bot, update):
 
     update.message.reply_text(finaldate)
 
+def pelicula(bot, update, args):
+	update.message.reply_text('Estoy buscando...')
+	res = ""
+	for i in args:
+		res = res +' '+ i
+	update.message.reply_text(res)
+	dict = find(res, 0)
+	update.message.reply_text('Esto es lo que he encontrado')
+	for key in dict:
+		update.message.reply_text(dict[key])
+
+
 
 updater = Updater('455286497:AAH7LZcEHYaB4X2eo_RoM7rqz7OGve1dB3I')
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('holamundo', hello))
 updater.dispatcher.add_handler(CommandHandler('fecha', obtener_hora))
+updater.dispatcher.add_handler(CommandHandler('buscarpeli', pelicula, pass_args=True))
 
 updater.start_polling()
 updater.idle()
